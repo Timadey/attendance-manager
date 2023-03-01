@@ -3,12 +3,13 @@
 """A department
 """
 
-from base_model import BaseModel, Base, Column, String
+from models.base_model import BaseModel, Column, String
+from database import db
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class Department(BaseModel, Base):
+class Department(BaseModel, db.Model):
     """A department belongs to an organisation
     Attributes:
         name: string: Name of the department

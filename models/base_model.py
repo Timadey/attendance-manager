@@ -5,10 +5,10 @@ This module contains the BaseModel class
 
 from uuid import uuid4
 from datetime import datetime
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
 
-Base = declarative_base()
+# Base = declarative_base()
 
 
 class BaseModel():
@@ -29,7 +29,7 @@ class BaseModel():
         if not kwargs:
             self.id = str(uuid4())
             self.date_added = datetime.now()
-            self.date_modified = self.dateadded
+            self.date_modified = self.date_added
         else:
             if "id" not in kwargs.keys():
                 setattr(self, 'id', str(uuid4()))

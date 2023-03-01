@@ -2,12 +2,13 @@
 
 """Members of an organisation
 """
+from models.user import User, Column, String
+from database import db
 
-from user import User, Base, Column, String
 from sqlalchemy import ForeignKey
 
 
-class Member(User, Base):
+class Member(User, db.Model):
     """Members of an organisation
     """
     __tablename__ = 'members'

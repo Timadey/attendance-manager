@@ -3,10 +3,10 @@
 user module
 """
 
-from base_model import BaseModel, Base, Column, String
+from models.base_model import BaseModel, Column, String
 
 
-class User(BaseModel, Base):
+class User(BaseModel):
     """
     An User of the system. Either an organisation or a member of an organisation
     Attributes:
@@ -18,12 +18,12 @@ class User(BaseModel, Base):
     email = Column(String(60), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
 
-    def __init__(self, name, email, password, **kwargs):
+    def __init__(self, name, email, **kwargs):
         """Initialize an user"""
         super().__init__(**kwargs)
         self.name = name
-        self._email = email
-        self._password = password
+        self.email = email
+        # self._password = password
 
     @property
     def email(self):

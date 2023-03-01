@@ -3,7 +3,8 @@
 Organisation module
 """
 
-from user import BaseModel, Base, User
+from models.user import User
+from models.base_model import Base
 from sqlalchemy.orm import relationship
 
 
