@@ -56,4 +56,6 @@ class BaseModel():
         model_dict['date_added'] = model_dict['date_added'].isoformat()
         model_dict['date_modified'] = model_dict['date_modified'].isoformat()
         model_dict['__class__'] = type(self).__name__
+        if '_sa_instance_state' in model_dict.keys():
+            model_dict.pop('_sa_instance_state', None)
         return model_dict

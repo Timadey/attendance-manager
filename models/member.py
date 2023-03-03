@@ -3,7 +3,7 @@
 """Members of an organisation
 """
 from models.user import User, Column, String
-from database import db
+from app import db
 
 from sqlalchemy import ForeignKey
 

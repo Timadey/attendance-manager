@@ -2,13 +2,12 @@
 """
 Organisation module
 """
-
+from app import db
 from models.user import User
-from models.base_model import Base
 from sqlalchemy.orm import relationship
 
 
-class Organisation(User, Base):
+class Organisation(User, db.Model):
     """
     An organisations consist of maany departments and members
     Attributes:

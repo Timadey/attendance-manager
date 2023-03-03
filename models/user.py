@@ -19,31 +19,6 @@ class User(BaseModel):
     password = Column(String(128), nullable=False)
 
     def __init__(self, name, email, **kwargs):
-        """Initialize an user"""
+        """Initialize department"""
         super().__init__(**kwargs)
         self.name = name
-        self.email = email
-        # self._password = password
-
-    @property
-    def email(self):
-        """Return the user email
-        """
-        return self._email
-
-    @email.setter
-    def email(self, email):
-        if type(email) != str:
-            raise TypeError("Email must be a string")
-
-    @property
-    def password(self):
-        """Get user password
-        """
-        return self._password
-
-    @password.setter
-    def password(self, password):
-        if type(password) != str:
-            raise TypeError("Password must be a string")
-        self._password = password
