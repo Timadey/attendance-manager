@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title> {{ title }} - Attendance Manager</title>
+        {% else %}
+        <title> Attendance Manager</title>
+        {% endif %}
+    </head>
+    
+    <body>
+        <h1> Menu </h1>
+        <div>
+           <span> <a href= "{{ url_for('departments') }}"> Departments </a> </span>
+           <span> <a href = "{{ url_for('add_department') }}" > New Department </a> </span>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

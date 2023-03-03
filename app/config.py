@@ -3,6 +3,10 @@
 """Configuration module
 """
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 class Config():
     """
     Configuration class
@@ -15,3 +19,4 @@ class Config():
     db = getenv('AM_MYSQL_DB')
 
     SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{user}:{pwd}@{host}/{db}'
+    SECRET_KEY = 'my-token-key'

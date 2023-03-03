@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 from flask_wtf import FlaskForm
-from wtfforms import StringField
+from wtforms import StringField, SubmitField
 
 
 class DepartmentForm(FlaskForm):
-    name = StringField(
+    name = StringField('Department Name')
+    submit = SubmitField('Save')
+    
