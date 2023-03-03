@@ -5,10 +5,8 @@ This module contains the BaseModel class
 
 from uuid import uuid4
 from datetime import datetime
-# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
-
-# Base = declarative_base()
+from database import storage
 
 
 class BaseModel():
@@ -43,11 +41,11 @@ class BaseModel():
     def __str__(self):
         """Return a string representation of the model
         """
-        return f"[{type(self).__name__}] ({self.id}) {self.to_dict()}"
+        return f"<{type(self).__name__}> ({self.id})"
 
     def __repr__(self):
         """Return official representation of model"""
-        return f"{type(self).__name__}(**{self.to_dict()})"
+        return self.__str__()
 
     def to_dict(self):
         """Return dictionary representation of the model
@@ -59,3 +57,13 @@ class BaseModel():
         if '_sa_instance_state' in model_dict.keys():
             model_dict.pop('_sa_instance_state', None)
         return model_dict
+
+    def save(self):
+        """Save the current model to the database
+        """
+        storage.save(self)
+
+    def all(self):
+        """Get all of this model from database
+        """
+        return storage.all(self)

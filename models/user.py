@@ -16,9 +16,23 @@ class User(BaseModel):
     """
     name = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False, unique=True)
-    password = Column(String(128), nullable=False)
+    hash_password = Column(String(128), nullable=False)
 
-    def __init__(self, name, email, **kwargs):
+    def __init__(self, name, email, password, **kwargs):
         """Initialize department"""
         super().__init__(**kwargs)
         self.name = name
+        self.email = email
+        self.hash_password = password
+
+    # @property
+    # def hash_password(self):
+    #     """User password is hashed before setting the attribute.
+    #     Only the hashed password is visible
+    #     """
+    #     return self.hash_password
+
+    # @hash_password.setter
+    # def hash_password(self, pwd):
+    #     # hash user password later
+    #     self.hash_password = pwd

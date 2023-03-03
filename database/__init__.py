@@ -1,10 +1,5 @@
 #!/usr/bin/python3
 
-from flask_sqlalchemy import SQLAlchemy
-from app import app
-from app.config import Config
+from database.dbstorage import DBStorage
 
-app.config_from_object(Config)
-
-db = SQLAlchemy()
-db.init_app(app)
+storage = DBStorage()

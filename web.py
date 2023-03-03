@@ -6,5 +6,4 @@ import flask
 import os
 
 if __name__ == "__main__":
-    os.environ['FLASK_APP'] = 'web.py'
     flask.run(app)
