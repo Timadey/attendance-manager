@@ -4,6 +4,7 @@
 """
 
 from models.base_model import BaseModel, Column, String
+from models.member import Member
 from app import db
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
@@ -19,7 +20,7 @@ class Department(BaseModel, db.Model):
     name = Column(String(255), nullable=False, unique=True)
     organisation_id = Column(String(60), ForeignKey(
         'organisations.id'), nullable=False)
-    members = relationship('Member', backref='department',
+    members = relationship(Member, backref='departments',
                            cascade='all, delete-orphan')
 
     def __init__(self, name, **kwargs):

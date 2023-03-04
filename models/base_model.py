@@ -19,7 +19,8 @@ class BaseModel():
     """
     id = Column(String(60), nullable=False, unique=True, primary_key=True)
     date_added = Column(DateTime, nullable=False, default=datetime.now())
-    date_modified = Column(DateTime, nullable=False, default=date_added)
+    date_modified = Column(DateTime, nullable=False, default=datetime.now())
+    _attr = ['id', 'date_added', 'date_modiefied']
 
     def __init__(self, **kwargs):
         """Initializes the model
@@ -31,6 +32,10 @@ class BaseModel():
         else:
             if "id" not in kwargs.keys():
                 setattr(self, 'id', str(uuid4()))
+            if 'date_added' not in kwargs.keys():
+                setattr(self, 'date_added', datetime.now())
+            if 'date_modified' not in kwargs.keys():
+                setattr(self, 'date_modified', datetime.now())
 
             for key, value in kwargs.items():
                 if key == 'date_added' or key == 'date_modified':
@@ -67,3 +72,9 @@ class BaseModel():
         """Get all of this model from database
         """
         return storage.all(self)
+
+    @classmethod
+    def get(cls, id: str):
+        """Return the object with `id` from database if it exists
+        """
+        return storage.get(cls, id)

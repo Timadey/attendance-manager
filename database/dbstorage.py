@@ -22,3 +22,8 @@ class DBStorage():
         """Get all `obj` in the database
         """
         return obj.query.all()
+
+    def get(self, obj, id: str):
+        """Get the `obj` with `id` from the database
+        """
+        return db.session.get(obj, id)
