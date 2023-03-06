@@ -16,7 +16,7 @@ class User(BaseModel):
     """
     name = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False, unique=True)
-    hash_password = Column(String(128), nullable=False)
+    hash_password = Column(String(128), nullable=False, default='password')
 
     def __init__(self, name, email, password, **kwargs):
         """Initialize department"""

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Mark Attendance </h1>
+<p> Currently marking attendance for <b> Unit meting </b></p>
+<form method='POST' , action="{{ url_for('mark_attendance') }}">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.code.label }} {{ form.code(size=40) }}
+    </p>
+    <p> {{ form.submit() }} </p>
+</form>
+<hr>
+{% endblock %}

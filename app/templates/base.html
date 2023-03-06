@@ -9,10 +9,12 @@
     </head>
     
     <body>
-        <h1> Menu </h1>
+        <h1> Attendance Manager </h1>
         <div>
-           <span> <a href= "{{ url_for('departments') }}"> Departments </a> </span>
-           <span> <a href = "{{ url_for('add_department') }}" > New Department </a> </span>
+           <span> <a href= "{{ url_for('index') }}"> (Mark Attendance) </a> </span> |
+           <span> <a href= "{{ url_for('departments') }}"> (Departments) </a> </span> |
+            <span> <a href="{{ url_for('meetings') }}"> (Meetings) </a> </span>
+
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}

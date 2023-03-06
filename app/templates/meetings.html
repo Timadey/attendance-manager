@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h1> Add Meeting </h1>
+    <form method='POST' , action="{{ url_for('meetings') }}">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }} {{ form.name(size=40) }}
+        </p>
+        <p>
+            {{ form.desc.label }} {{ form.desc(size=40) }}
+        </p>
+        <p> {{ form.submit() }} </p>
+    </form>
+    <hr>
+    <h2> Meetings </h2>
+    <ol>
+        {% for meeting in meetings %}
+        <li> {{ meeting.name }} >>> Set as default</li>
+        {% else %}
+        <p> No meeting added yet. Add new ones</p>
+        {% endfor %}
+    </ol>
+</div>
+{% endblock %}

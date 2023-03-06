@@ -21,3 +21,4 @@ class Organisation(User, db.Model):
     members = relationship('Member', backref='organisation',
                            cascade='all, delete-orphan')
     departments = relationship('Department', cascade='all, delete-orphan')
+    meetings = relationship('Meeting', cascade='all, delete-orphan')

@@ -2,11 +2,13 @@
 
 {% block content %}
 <div>
+    {% include 'department_new.html' %}
+    <hr>
     <h2> Departments </h2>
-    <ul>
+    <ol>
         {% for department in departments %}
-        <li> <a href='#'>{{ department.name }}</a></li>
+        <li> <a href='/departments/{{ department.id }}'>{{ department.name }}</a>  ({{ department.members|length }} members)</li>
         {% endfor %}
-    </ul>
+    </ol>
 </div>
 {% endblock %}

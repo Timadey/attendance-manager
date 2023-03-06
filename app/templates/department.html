@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1>{{ department.name }}</h1>
+    <p>{{ department.members|length}} Members</p>
+    <p>Created at: {{ department.date_added }}</p>
+    <hr>
+    <h2> Add Member </h2>
+    <form method='POST' , action="{{ url_for('departments') }}/{{department.id}}">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }} {{ form.name(size=40) }}
+        </p>
+        <p>
+            {{ form.email.label }} {{ form.email(size=40) }}
+        </p>
+        <p> {{ form.submit() }} </p>
+    </form>
+    <hr>
+    <h2>Members in Departments</h2>
+    {% for member in department.members %}
+    <ul>
+        <li>{{ member.name }}</li>
+    </ul>
+    {% else %}
+    <p> No member in department </p>
+    {% endfor %}
+</div>
+{% endblock %}
